@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, request
+from flask.helpers import url_for
 
 app = Flask(__name__)
 
@@ -16,6 +17,4 @@ def add():
     f = open('good.txt', 'a+', encoding='utf-8')
     f.write("\n" + good)
     f.close()
-    return """<h1>Инвентарь пополнен</h1>
-              <a href='/'> Вернуться обратно </a>
-           """
+    return redirect(url_for('homepage'))
